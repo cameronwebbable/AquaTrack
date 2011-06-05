@@ -3,6 +3,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
 	xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
 	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,17 +12,37 @@
 	FontFamily="{StaticResource PhoneFontFamilyNormal}"
 	FontSize="{StaticResource PhoneFontSizeNormal}"
 	Foreground="{StaticResource PhoneForegroundBrush}"
+	d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
 	SupportedOrientations="Portrait" Orientation="Portrait"
+    toolkit:TiltEffect.IsTiltEnabled="True"
 	shell:SystemTray.IsVisible="False">
 
 	<!--LayoutRoot contains the root grid where all other page content is placed-->
 	<Grid x:Name="LayoutRoot">
-		<controls:Panorama Title="my application">
+		<controls:Panorama Title="aqua track" Foreground="White">
+			<controls:Panorama.Background>
+				<ImageBrush Stretch="UniformToFill" ImageSource="images/luimage.jpg"/>
+			</controls:Panorama.Background>
 
 			<!--Panorama item one-->
 			<controls:PanoramaItem Header="meets">
-				<Grid/>
-			</controls:PanoramaItem>
+                <ListBox x:Name="meetList" Margin="0,0,-12,0" ItemsSource="{Binding Items}" SelectionChanged="meetList_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,17" Width="453">
+                        
+                    	<StackPanel Width="458" Height="90" Opacity="1">
+                    		<StackPanel Opacity=".7" Height="90 " Background="White" Margin="-4,0,0,0"/>
+                        
+                    		<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="2,-90,10,0" Foreground="Black"/>
+                    		<TextBlock Opacity="1" Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="0,-40,32,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#99000000"/>
+                    	</StackPanel>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+                </ListBox>
+            </controls:PanoramaItem>
 
 			<!--Panorama item two-->
 			<controls:PanoramaItem Header="roster">

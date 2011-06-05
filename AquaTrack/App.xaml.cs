@@ -23,6 +23,21 @@ namespace AquaTrack
         /// <returns>The root frame of the Phone Application.</returns>
         public PhoneApplicationFrame RootFrame { get; private set; }
 
+        private static MeetsViewModel viewModel = null;
+
+        public static MeetsViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (viewModel == null)
+                {
+                    viewModel = new MeetsViewModel();
+                }
+
+                return viewModel;
+            }
+        }
         /// <summary>
         /// Constructor for the Application object.
         /// </summary>
@@ -63,6 +78,10 @@ namespace AquaTrack
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (!App.ViewModel.IsDataLoaded)
+            {
+                App.ViewModel.LoadData();
+            }
         }
 
         // Code to execute when the application is deactivated (sent to background)

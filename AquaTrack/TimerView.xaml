@@ -1,0 +1,69 @@
+﻿<phone:PhoneApplicationPage 
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+	xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+	mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+	x:Class="AquaTrack.TimerView"
+        d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
+	FontFamily="{StaticResource PhoneFontFamilyNormal}"
+	FontSize="{StaticResource PhoneFontSizeNormal}"
+	Foreground="{StaticResource PhoneForegroundBrush}"
+	Orientation="Portrait"
+    toolkit:TiltEffect.IsTiltEnabled="True"
+	shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Background>
+		<ImageBrush Stretch="Fill"/>
+	</phone:PhoneApplicationPage.Background>
+
+	<!--LayoutRoot is the root grid where all page content is placed-->
+	<Grid x:Name="LayoutRoot">
+		<Grid.Background>
+			<ImageBrush Stretch="UniformToFill" ImageSource="images/kschneids.jpg"/>
+		</Grid.Background>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+		
+		<!--TitlePanel contains the name of the application and page title-->
+		<Rectangle Fill="Black" Margin="8,7,12,18" Stroke="Black" Opacity="0.5"/>
+		
+		<!--TitlePanel contains the name of the application and page title-->
+		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+			<TextBlock x:Name="PageTitle" Text="event name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="50.667"/>
+		</StackPanel>
+
+		<!--ContentPanel - place additional content here-->
+		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+			<Rectangle Fill="#FF0000BE" Height="90" Margin="0,-2,4,0" Stroke="Black" VerticalAlignment="Top" Opacity="0.7" Width="452"/>
+			<TextBlock Height="88" Margin="0,0,152,0" TextWrapping="Wrap" Text="0:00.00" VerticalAlignment="Top" FontSize="64"/>
+		</Grid>
+        <ListBox x:Name="swimmerList" Margin="10,100,12,0" ItemsSource="{Binding Swimmers}" SelectionChanged="meetList_SelectionChanged" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
+                        
+                    	<StackPanel Width="458" Height="90" Opacity="1">
+                    		<StackPanel Width="458" Opacity=".7" Height="90" Background="White" Margin="-4,0,4,0"/>
+                        
+                    		<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="2,-90,10,0" Foreground="Black"/>
+                    		<TextBlock Opacity="1" Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="0,-40,32,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#99000000"/>
+                    	</StackPanel>
+                        
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+	    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="reviewBtn" IconUri="/icons/appbar.transport.play.rest.png" Text="reviews"/>
+            <shell:ApplicationBarIconButton x:Name="photosBtn" IconUri="/icons/appbar.stop.rest.png" Text="photos"  />
+            <shell:ApplicationBarIconButton IconUri="/icons/appbar.transport.pause.rest.png" Text="button"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

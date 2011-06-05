@@ -13,32 +13,37 @@ using Microsoft.Phone.Controls;
 
 namespace AquaTrack
 {
-    public partial class MenuPage : PhoneApplicationPage
+    public partial class MeetView : PhoneApplicationPage
     {
-        public MenuPage()
+        string meetName;
+        public MeetView()
         {
             InitializeComponent();
             DataContext = App.ViewModel;
-            this.Loaded += new RoutedEventHandler(MenuPage_Loaded);
+            this.Loaded += new RoutedEventHandler(MeetView_Loaded);
         }
 
-        private void MenuPage_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            meetName = NavigationContext.QueryString["selection"];
+            PageTitle.Text = meetName;
+        }
+        private void MeetView_Loaded(object sender, RoutedEventArgs e)
         {
             if (!App.ViewModel.IsDataLoaded)
             {
                 App.ViewModel.LoadData();
             }
         }
-
-        private void meetList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void eventView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int selectedIndex = (sender as ListBox).SelectedIndex;
 
             if (selectedIndex != -1)
             {
-                string meetName = App.ViewModel.Items[selectedIndex].LineOne;
+                string meetName = App.ViewModel.Events[selectedIndex].LineOne;
 
-                NavigationService.Navigate(new Uri("/MeetView.xaml?selection=" + meetName, UriKind.Relative));
+                NavigationService.Navigate(new Uri("/TimerView.xaml?selection=" + meetName, UriKind.Relative));
                 (sender as ListBox).SelectedIndex = -1;
             }
         }
