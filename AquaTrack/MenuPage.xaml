@@ -32,7 +32,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,17" Width="453">
                         
                     	<StackPanel Width="458" Height="90" Opacity="1">
-                    		<StackPanel Opacity=".7" Height="90 " Background="White" Margin="-4,0,0,0"/>
+                    		<StackPanel Opacity=".7" Height="90" Background="White" Margin="-4,0,0,0"/>
                         
                     		<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="2,-90,10,0" Foreground="Black"/>
                     		<TextBlock Opacity="1" Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="0,-40,32,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#99000000"/>

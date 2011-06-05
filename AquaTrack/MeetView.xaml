@@ -37,7 +37,7 @@
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="eventView" Margin="-2,-17,2,0" ItemsSource="{Binding Events}" SelectionChanged="eventView_SelectionChanged" Foreground="White" Background="{x:Null}">
+            <ListBox x:Name="eventView" Margin="-2,-17,2,0" ItemsSource="{Binding Events}" SelectionChanged="eventView_SelectionChanged" Foreground="White" Background="{x:Null}" BorderThickness="0,15,0,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
