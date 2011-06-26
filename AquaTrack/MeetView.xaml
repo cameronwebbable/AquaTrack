@@ -35,20 +35,17 @@
 			<TextBlock x:Name="PageTitle" Text="masters nationals" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="40"/>
 		</StackPanel>
 
-		<!--ContentPanel - place additional content here-->
+		<!--ContentPanel - place additionafl content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <ListBox x:Name="eventView" Margin="-2,-17,2,0" ItemsSource="{Binding Events}" SelectionChanged="eventView_SelectionChanged" Foreground="White" Background="{x:Null}" BorderThickness="0,15,0,0">
+            <ListBox x:Name="eventView" Margin="-2,-17,2,0" ItemsSource="{Binding Events}" SelectionChanged="eventView_SelectionChanged" Foreground="White" Background="{x:Null}" BorderThickness="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,17">
-                        
-                    	<StackPanel Width="458" Height="90" Opacity="1">
-                    		<StackPanel Width="458" Opacity=".7" Height="90" Background="White" Margin="-4,0,4,0"/>
-                        
-                    		<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="2,-90,10,0" Foreground="Black"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,9" Height="101">
+                    	<StackPanel Width="458" Opacity="1" Margin="0">
+                    		<StackPanel Width="458" Opacity="0.53" Height="101" Margin="-4,0,4,0" Background="White"/>
+                    		<TextBlock Text="{Binding LineOne}" TextWrapping="Wrap" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="2,-90,10,0" Foreground="Black" Height="78"/>
                     		<TextBlock Opacity="1" Text="{Binding LineTwo}" TextWrapping="Wrap" Margin="0,-40,32,0" Style="{StaticResource PhoneTextSubtleStyle}" Foreground="#99000000"/>
                     	</StackPanel>
-                        
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

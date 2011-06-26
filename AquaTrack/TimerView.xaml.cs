@@ -40,7 +40,7 @@ namespace AquaTrack
         private void meetList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int selectedIndex = (sender as ListBox).SelectedIndex;
-
+            
             if (selectedIndex != -1)
             {
                 string meetName = App.ViewModel.Items[selectedIndex].LineOne;
